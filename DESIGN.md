@@ -5,7 +5,7 @@ AI Agents and developers must parse and strictly enforce these native CSS rules 
 ---
 ## 🎨 Color Tokens (OKLCH Space)
 Colors are defined using the perceptually uniform `oklch(Lightness Chroma Hue)` functional notation. 
-- Primitive layer tokens expose raw, comma-separated numeric vectors (`L C H`). This allows modern CSS injection engines to dynamically apply alpha transparency natively: `oklch(var(--primitive-token) / alpha)`. Initial discovery and extraction are governed by [`skills/brand-identity-discovery/SKILL.md`](./skills/brand-identity-discovery/SKILL.md), while compilation to target style engines (Tailwind v3/v4, CSS Modules) is executed by [`skills/framework-token-adapter/SKILL.md`](./skills/framework-token-adapter/SKILL.md).
+- Primitive layer tokens expose raw, comma-separated numeric vectors (`L C H`). This allows modern CSS injection engines to dynamically apply alpha transparency natively: `oklch(var(--primitive-token) / alpha)`. Initial discovery and extraction are governed by [`skills/brand-identity-discovery/skill.md`](./skills/brand-identity-discovery/skill.md), while compilation to target style engines (Tailwind v3/v4, CSS Modules) is executed by [`skills/framework-token-adapter/skill.md`](./skills/framework-token-adapter/skill.md).
 - **Enforcement Rule:** Never hardcode raw hex values directly into component styling layers. Always bind elements to the semantic token map.
 ### 1. Primitive Tokens (Base Coordinates)
 *Do not assign these directly to layout elements. Use the intent-based Semantic Map variables.*
@@ -89,7 +89,7 @@ Interactive components must declare visual states explicitly. When generating st
 ## 🧭 Iconography & Touch Target Rules
 - **Visual Specs:** Consistent visual weights. All assets within this deployment rely on a `2px` stroke profile, featuring rounded linecaps and joins (`stroke-linecap: round; stroke-linejoin: round;`). Use `currentColor` to dynamically paint stroke fills directly from the localized textual context block.
 - **Geometric Sizing:** Native icon boundary maps to a static `24×24px` visual envelope.
-- **♿ Interactive Accessibility Target (Hitbox Rule):** Regardless of the visual rendering dimensions of the icon itself (even if shrunk to `20px`), the clickable boundary footprint **must extend to a minimum hitbox size of 44×44px** to satisfy mobile touch target human-interface rules. Apply transparent padding structures or wrapper blocks to realize this size without breaking visual placement. Contrast thresholds (4.5:1 / 3:1) and touch targets are strictly audited via [`skills/accessibility-contrast-auditor/SKILL.md`](./skills/accessibility-contrast-auditor/SKILL.md).
+- **♿ Interactive Accessibility Target (Hitbox Rule):** Regardless of the visual rendering dimensions of the icon itself (even if shrunk to `20px`), the clickable boundary footprint **must extend to a minimum hitbox size of 44×44px** to satisfy mobile touch target human-interface rules. Apply transparent padding structures or wrapper blocks to realize this size without breaking visual placement. Contrast thresholds (4.5:1 / 3:1) and touch targets are strictly audited via [`skills/accessibility-contrast-auditor/skill.md`](./skills/accessibility-contrast-auditor/skill.md).
 ---
 ## 🎬 Motion & Transitions (Intential Performance Scaling)
 Animation properties exist to clarify physical layer mutations and direct visual attention. They must execute smoothly without stalling performance or preventing immediate user interaction.
@@ -118,7 +118,7 @@ Shadow arrays use color-aware alpha values derived via runtime execution layers 
 - `--shadow-lg`: `0 16px 32px -4px var(--shadow-ambient)`
 ---
 ## 📋 Comprehensive Execution Do's and Don'ts
-Consult [`skills/writing-ui-components/SKILL.md`](./skills/writing-ui-components/SKILL.md) and [`skills/writing-ui-components/references/anti-patterns.md`](./skills/writing-ui-components/references/anti-patterns.md) for full architectural patterns and forbidden anti-patterns.
+Consult [`skills/writing-ui-components/skill.md`](./skills/writing-ui-components/skill.md) and [`skills/writing-ui-components/references/anti-patterns.md`](./skills/writing-ui-components/references/anti-patterns.md) for full architectural patterns and forbidden anti-patterns.
 
 ### SÍ (Enforce)
 * **SÍ:** Ensure layout spatial properties correspond mathematically to a baseline multiple of 4px.

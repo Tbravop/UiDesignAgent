@@ -7,10 +7,10 @@ Esta es una guía de descubrimiento, cadencia y arquitectura para agentes de IA 
 ## 📍 Resolución de Rutas y Portabilidad Multi-Proyecto
 
 Este kit de directivas y skills está diseñado para ejecutarse de forma portátil en **cualquier proyecto**:
-- **Ubicación de este Kit:** Puede ubicarse en la raíz del repositorio (`./`), dentro de un subdirectorio (ej. `./UXAgent/`, `./.agents/`, `./.gemini/`, `./tools/UXAgent/`) o en un directorio global de skills. Todas las referencias internas entre sus propios archivos son relativas (`./` o relativas entre carpetas de `skills/`).
+- **Ubicación de este Kit:** Puede ubicarse en la raíz del repositorio (`./`), dentro de un subdirectorio (ej. `./UXAgent/`, `./.agents/`, `./.gemini/`, `./tools/UXAgent/`) o en un directorio global de skills. Todas las referencias internas entre sus propios archivos son relativas (`./` o relativas entre carpetas de `skills/`). Cada skill cuenta con su propio directorio y su archivo ejecutable `skill.md` (`./skills/{nombre-skill}/skill.md`).
 - **`DESIGN.md` del Proyecto vs `DESIGN.md` de Plantilla:**
   - El archivo oficial de diseño de la aplicación es el que reside en la **raíz del proyecto anfitrión** (`<raíz-proyecto>/DESIGN.md`).
-  - Si el proyecto aún no cuenta con su propio `DESIGN.md`, el agente debe usar el archivo [`DESIGN.md`](./DESIGN.md) de este kit como **plantilla y especificación base** para generarlo en la raíz del proyecto mediante [`skills/brand-identity-discovery/SKILL.md`](./skills/brand-identity-discovery/SKILL.md).
+  - Si el proyecto aún no cuenta con su propio `DESIGN.md`, el agente debe usar el archivo [`DESIGN.md`](./DESIGN.md) de este kit como **plantilla y especificación base** para generarlo en la raíz del proyecto mediante [`skills/brand-identity-discovery/skill.md`](./skills/brand-identity-discovery/skill.md).
 - **Detección Flexible en Monorepos y Multi-paquetes:** El agente debe buscar los archivos de configuración (`package.json`, configuraciones de estilos, etc.) tanto en la raíz del repositorio como en el subdirectorio específico del paquete frontend (ej. `apps/web/`, `frontend/`, `client/`, `packages/ui/`).
 
 ---
@@ -25,12 +25,20 @@ Antes de ejecutar cualquier cambio en el código, el agente debe activar y respe
 | **`DESIGN.md`** | [`./DESIGN.md`](./DESIGN.md) | Única fuente de verdad de tokens OKLCH, escala tipográfica `clamp()`, grid modular de 4px, hitboxes de 44x44px y motion. |
 | **`COMPONENTS.md`** | [`./COMPONENTS.md`](./COMPONENTS.md) | Catálogo universal de especificaciones agnósticas (`.spec.md`) divididas en Átomos, Moléculas, Organismos y Patrones. |
 | **`specs/`** | [`./specs/`](./specs/) | 48 contratos de componentes agnósticos (`atoms/`, `molecules/`, `organisms/`, `patterns/`) con heurísticas de Playwright, interfaces TypeScript y reglas WAI-ARIA. |
-| **`brand-identity-discovery`** | [`./skills/brand-identity-discovery/SKILL.md`](./skills/brand-identity-discovery/SKILL.md) | Disparar al inicializar un repositorio sin `DESIGN.md` en su raíz, al integrar una nueva marca o migrar paletas a OKLCH. |
-| **`framework-token-adapter`** | [`./skills/framework-token-adapter/SKILL.md`](./skills/framework-token-adapter/SKILL.md) | Disparar inmediatamente tras crear o modificar `DESIGN.md` para compilar tokens en Tailwind v3/v4 o CSS Modules. |
-| **`design-system-auditor`** | [`./skills/design-system-auditor/SKILL.md`](./skills/design-system-auditor/SKILL.md) | Disparar al auditar un sitio con Playwright y antes de crear o estandarizar cualquier vista o componente UI (Regla 1). Prioriza la biblioteca nativa, corrige contraste/clases dispares en vistas y usa `./specs/` para componentes abstractos. |
-| **`writing-ui-components`** | [`./skills/writing-ui-components/SKILL.md`](./skills/writing-ui-components/SKILL.md) | Disparar al crear, estructurar, dividir o mover componentes UI (Regla 5). Aplica la escalera de abstracción y estados obligatorios. |
+| **`brand-identity-discovery`** | [`./skills/brand-identity-discovery/skill.md`](./skills/brand-identity-discovery/skill.md) | Disparar al inicializar un repositorio sin `DESIGN.md` en su raíz, al integrar una nueva marca o migrar paletas a OKLCH. |
+| **`framework-token-adapter`** | [`./skills/framework-token-adapter/skill.md`](./skills/framework-token-adapter/skill.md) | Disparar inmediatamente tras crear o modificar `DESIGN.md` para compilar tokens en Tailwind v3/v4 o CSS Modules. |
+| **`design-system-auditor`** | [`./skills/design-system-auditor/skill.md`](./skills/design-system-auditor/skill.md) | Disparar al auditar un sitio con Playwright y antes de crear o estandarizar cualquier vista o componente UI (Regla 1). Prioriza la biblioteca nativa, corrige contraste/clases dispares en vistas y usa `./specs/` para componentes abstractos. |
+| **`writing-ui-components`** | [`./skills/writing-ui-components/skill.md`](./skills/writing-ui-components/skill.md) | Disparar al crear, estructurar, dividir o mover componentes UI (Regla 5). Aplica la escalera de abstracción y estados obligatorios. |
 | **`anti-patterns.md`** | [`./skills/writing-ui-components/references/anti-patterns.md`](./skills/writing-ui-components/references/anti-patterns.md) | Catálogo de malas prácticas y anti-patrones que deben corregirse a la vista en componentes, estilos y asincronía. |
-| **`accessibility-contrast-auditor`** | [`./skills/accessibility-contrast-auditor/SKILL.md`](./skills/accessibility-contrast-auditor/SKILL.md) | Disparar al definir combinaciones de color, estados hover/focus, áreas táctiles mínimas (44x44px) y media queries de accesibilidad (Regla 6). |
+| **`accessibility-contrast-auditor`** | [`./skills/accessibility-contrast-auditor/skill.md`](./skills/accessibility-contrast-auditor/skill.md) | Disparar al definir combinaciones de color, estados hover/focus, áreas táctiles mínimas (44x44px) y media queries de accesibilidad (Regla 6). |
+| **`playwright-inspector`** | [`./skills/playwright-inspector/skill.md`](./skills/playwright-inspector/skill.md) | Disparar en Fase -1, Fase 0 y durante `/design-system-auditor` para escaneo en vivo de DOM, geometría computada y detección de clusters sin spec. |
+| **`ui-library-spec-extractor`** | [`./skills/ui-library-spec-extractor/skill.md`](./skills/ui-library-spec-extractor/skill.md) | Disparar cuando Playwright detecta componentes sin spec en `./specs/` para generar en caliente la `.spec.md` correspondiente. |
+| **`src-builder`** | [`./skills/src-builder/skill.md`](./skills/src-builder/skill.md) | Disparar para decidir cuándo estandarizar directamente en las vistas nativas y cuándo construir en `./src/components/` guiado por `./specs/`. |
+| **`visual-clustering`** | [`./skills/visual-clustering/skill.md`](./skills/visual-clustering/skill.md) | Disparar para extracción y agrupamiento de propiedades visuales calculadas vía Playwright. |
+| **`design-md-updater`** | [`./skills/design-md-updater/skill.md`](./skills/design-md-updater/skill.md) | Disparar al actualizar y enriquecer `DESIGN.md` protegiendo los tokens de marca preexistentes. |
+| **`form-control-auditor`** | [`./skills/form-control-auditor/skill.md`](./skills/form-control-auditor/skill.md) | Disparar al auditar formularios, validaciones interactivas y patrones WAI-ARIA. |
+| **`github-route-resolver`** | [`./skills/github-route-resolver/skill.md`](./skills/github-route-resolver/skill.md) | Disparar para asegurar la resolución de rutas relativas POSIX dentro de repositorios GitHub. |
+| **`layout-sorter`** | [`./skills/layout-sorter/skill.md`](./skills/layout-sorter/skill.md) | Disparar al reorganizar elementos DOM desordenados en etiquetas semánticas HTML5. |
 
 ---
 
@@ -56,24 +64,24 @@ Antes de modificar cualquier archivo de la aplicación, el agente DEBE seguir es
 
 2. **Fase 1 — Validación de Identidad y Tokens (`brand-identity-discovery`):**
    - Verificar si el proyecto cuenta con un `DESIGN.md` en su raíz (`<raíz-proyecto>/DESIGN.md`).
-   - Si no existe, activar [`./skills/brand-identity-discovery/SKILL.md`](./skills/brand-identity-discovery/SKILL.md) para inspeccionar paletas o aplicar el arquetipo correspondiente y compilar `DESIGN.md` en la raíz del proyecto basándose en la plantilla [`./DESIGN.md`](./DESIGN.md).
+   - Si no existe, activar [`./skills/brand-identity-discovery/skill.md`](./skills/brand-identity-discovery/skill.md) para inspeccionar paletas o aplicar el arquetipo correspondiente y compilar `DESIGN.md` en la raíz del proyecto basándose en la plantilla [`./DESIGN.md`](./DESIGN.md).
 
 3. **Fase 2 — Adaptación de Tokens al Framework (`framework-token-adapter`):**
-   - Activar [`./skills/framework-token-adapter/SKILL.md`](./skills/framework-token-adapter/SKILL.md) para validar o inyectar las variables y tokens de `DESIGN.md` en la sintaxis nativa del motor de estilos detectado en la Fase 0 (Tailwind v3/v4 o CSS Modules/Variables).
+   - Activar [`./skills/framework-token-adapter/skill.md`](./skills/framework-token-adapter/skill.md) para validar o inyectar las variables y tokens de `DESIGN.md` en la sintaxis nativa del motor de estilos detectado en la Fase 0 (Tailwind v3/v4 o CSS Modules/Variables).
 
 4. **Fase 3 — Auditoría de Precedentes y Componentes (`design-system-auditor`):**
-   - Antes de escribir o refactorizar cualquier pantalla, diálogo o formulario, activar [`./skills/design-system-auditor/SKILL.md`](./skills/design-system-auditor/SKILL.md) para inventariar componentes existentes y forzar la reutilización (Regla 1).
+   - Antes de escribir o refactorizar cualquier pantalla, diálogo o formulario, activar [`./skills/design-system-auditor/skill.md`](./skills/design-system-auditor/skill.md) para inventariar componentes existentes y forzar la reutilización (Regla 1).
 
 5. **Fase 4 — Construcción, Accesibilidad y Validación (`writing-ui-components` & `anti-patterns.md`):**
-   - Construir interfaces aplicando la escalera de abstracción y los tres estados obligatorios según [`./skills/writing-ui-components/SKILL.md`](./skills/writing-ui-components/SKILL.md).
-   - Garantizar contraste WCAG y áreas táctiles mínimas de 44x44px según [`./skills/accessibility-contrast-auditor/SKILL.md`](./skills/accessibility-contrast-auditor/SKILL.md).
+   - Construir interfaces aplicando la escalera de abstracción y los tres estados obligatorios según [`./skills/writing-ui-components/skill.md`](./skills/writing-ui-components/skill.md).
+   - Garantizar contraste WCAG y áreas táctiles mínimas de 44x44px según [`./skills/accessibility-contrast-auditor/skill.md`](./skills/accessibility-contrast-auditor/skill.md).
    - Verificar el marcado final contra el catálogo de [`./skills/writing-ui-components/references/anti-patterns.md`](./skills/writing-ui-components/references/anti-patterns.md).
 
 ---
 
 ## Regla 1 — Reutilizar la Biblioteca Nativa y Estandarizar Activamente la Vista
 
-Antes de compilar o programar cualquier elemento de la interfaz de usuario (UI), detecta la biblioteca activa del proyecto (sistema de componentes o motor de utilidades CSS nativo) y busca un componente existente. Esta disciplina es auditada y aplicada por [`./skills/design-system-auditor/SKILL.md`](./skills/design-system-auditor/SKILL.md).
+Antes de compilar o programar cualquier elemento de la interfaz de usuario (UI), detecta la biblioteca activa del proyecto (sistema de componentes o motor de utilidades CSS nativo) y busca un componente existente. Esta disciplina es auditada y aplicada por [`./skills/design-system-auditor/skill.md`](./skills/design-system-auditor/skill.md).
 
 - **Prioridad de Biblioteca Nativa (`Library-First`):** Si el proyecto utiliza una biblioteca de estilos o componentes instalada, todo lo actual y futuro estándar se construye con esa misma biblioteca. El catálogo `./specs/` solo entra a generar un componente nuevo desde cero cuando el usuario busca un componente **más abstracto, distinto o que la biblioteca no posea**.
 - **Estandarización, Corrección y Optimización Activa en las Vistas:** Cuando el agente audita una vista existente (ej. con Playwright), su deber es **estandarizar, arreglar, optimizar y mejorar directamente el código de la vista** dentro de su biblioteca:
@@ -87,7 +95,7 @@ Antes de compilar o programar cualquier elemento de la interfaz de usuario (UI),
 - **Orden de prioridad para buscar componentes:**
   1. **Librería de Componentes Nucleares:** Revisa la carpeta principal de UI del proyecto (ej. `src/components/ui/`, `components/ui/`, `src/ui/`, `app/components/ui/`, `packages/ui/` o la biblioteca compartida del proyecto). En el 90% de los casos, detente aquí.
   2. **Componentes Locales o Compartidos Antiguos:** Revisa los directorios locales del módulo antes de asumir que algo no existe.
-  3. **Propuestas de Extensión:** Si ningún componente se adapta perfectamente a lo que necesitas, indícalo explícitamente y propón extender un componente existente con una nueva propiedad antes de crear uno nuevo. No dupliques código en silencio. Consulta la matriz de decisiones en [`./skills/design-system-auditor/SKILL.md`](./skills/design-system-auditor/SKILL.md).
+  3. **Propuestas de Extensión:** Si ningún componente se adapta perfectamente a lo que necesitas, indícalo explícitamente y propón extender un componente existente con una nueva propiedad antes de crear uno nuevo. No dupliques código en silencio. Consulta la matriz de decisiones en [`./skills/design-system-auditor/skill.md`](./skills/design-system-auditor/skill.md).
 - **Catálogo de sustituciones comunes** (Asegúrate de mapear esto en el ecosistema actual):
   - ¿Vas a crear una tabla manual? → Usa el componente `Table` global (con paginación y ordenamiento nativo).
   - ¿Vas a crear un badge o contador? → Usa `Badge` o `Tag`.
@@ -124,7 +132,7 @@ El backend (o el esquema de la API/Swagger/OpenAPI) es la única fuente de verda
 
 ## Regla 5 — Estructura de archivos y abstracción limpia
 
-Al crear, modificar, dividir o extraer componentes, aplica estrictamente las directrices de [`./skills/writing-ui-components/SKILL.md`](./skills/writing-ui-components/SKILL.md) y consulta [`./skills/writing-ui-components/references/anti-patterns.md`](./skills/writing-ui-components/references/anti-patterns.md).
+Al crear, modificar, dividir o extraer componentes, aplica estrictamente las directrices de [`./skills/writing-ui-components/skill.md`](./skills/writing-ui-components/skill.md) y consulta [`./skills/writing-ui-components/references/anti-patterns.md`](./skills/writing-ui-components/references/anti-patterns.md).
 
 - **Un componente por archivo:** El archivo debe llamarse igual que su exportación principal. Usa únicamente exportaciones nombradas (*named exports*). Evita los archivos índice comodín (`index.ts` tipo barril) para evitar dependencias circulares.
 - **Regla de tres para componentes compartidos:** Extrae un componente compartido únicamente cuando el código en el que se invoca se lea como contenido y no como maquetación, y cuando ocurra en al menos tres lugares distintos (o dos lugares con una certeza absoluta de un tercero en camino). Si la abstracción requiere condicionales complejos para funcionar de manera distinta según quién lo llame, significa que no comparten la misma naturaleza: deja la duplicación local.
@@ -136,12 +144,12 @@ Al crear, modificar, dividir o extraer componentes, aplica estrictamente las dir
 
 ## Regla 6 — Diseño responsivo enfocado en contenedores (No en pantallas)
 
-Toda interfaz web debe soportar visualizaciones en espacios reducidos (por ejemplo, cuando el usuario abre un panel lateral de configuración o reduce el tamaño de su ventana de trabajo) y cumplir con las normas de accesibilidad de [`./skills/accessibility-contrast-auditor/SKILL.md`](./skills/accessibility-contrast-auditor/SKILL.md) y [`./DESIGN.md`](./DESIGN.md).
+Toda interfaz web debe soportar visualizaciones en espacios reducidos (por ejemplo, cuando el usuario abre un panel lateral de configuración o reduce el tamaño de su ventana de trabajo) y cumplir con las normas de accesibilidad de [`./skills/accessibility-contrast-auditor/skill.md`](./skills/accessibility-contrast-auditor/skill.md) y [`./DESIGN.md`](./DESIGN.md).
 
 - **Usa Consultas de Contenedor (*Container Queries*), no de pantalla (*Viewport Queries*):** Los breakpoints tradicionales (`md:`, `lg:`) evalúan el ancho total de la ventana del navegador. Sin embargo, un componente dentro de un panel lateral puede tener un espacio real de apenas 400px en una pantalla gigante. Programa el comportamiento responsivo basándote en el espacio disponible de su contenedor.
 - **Cero desbordamientos:** Nada debe cortarse de forma abrupta ni generar barras de desplazamiento horizontal inesperadas. Usa envolturas de flexbox (`flex-wrap`) para filas de botones o etiquetas, trunca cadenas de texto largas mediante elipses y apila columnas dobles verticalmente si el espacio se reduce.
 - **Prioriza el contenido sobre la decoración:** Si el espacio es crítico, elimina ilustraciones, iconos secundarios o reduce márgenes de espaciado antes de sacrificar el texto explicativo o el botón de acción principal.
-- **Hitboxes táctiles accesibles:** Cualquier elemento cliqueable debe contar con un área de interacción mínima de 44x44px según se estipula en [`./DESIGN.md`](./DESIGN.md) y [`./skills/accessibility-contrast-auditor/SKILL.md`](./skills/accessibility-contrast-auditor/SKILL.md).
+- **Hitboxes táctiles accesibles:** Cualquier elemento cliqueable debe contar con un área de interacción mínima de 44x44px según se estipula en [`./DESIGN.md`](./DESIGN.md) y [`./skills/accessibility-contrast-auditor/skill.md`](./skills/accessibility-contrast-auditor/skill.md).
 - **No asumas un entorno móvil de forma errónea:** "Espacio estrecho" en aplicaciones web internas o SaaS no significa un teléfono móvil; significa un panel acoplado o una pantalla dividida en un monitor de escritorio. No agregues comportamientos táctiles a menos que el producto lo requiera explícitamente.
 
 ---

@@ -1,6 +1,11 @@
+---
+name: src-builder
+description: Skill para decidir cuándo estandarizar u optimizar en las vistas con la biblioteca nativa y cuándo construir componentes abstractos en ./src/components/ guiado por ./specs/.
+---
+
 # Skill Spec: Library-First Standardizer & Abstract Component Builder
 
-Skill encargada de decidir cuándo estandarizar/optimizar directamente en las vistas usando la biblioteca nativa del proyecto y cuándo construir un componente abstracto en `./src/components/` guiado por `./specs/`.
+Skill encargada de decidir cuándo estandarizar/optimizar directamente en las vistas usando la biblioteca nativa del proyecto y cuándo construir un componente abstracto en `./src/components/` guiado por [`../../specs/`](../../specs/).
 
 ---
 
@@ -16,4 +21,4 @@ Skill encargada de decidir cuándo estandarizar/optimizar directamente en las vi
      - **Usabilidad y Accesibilidad:** garantiza hitboxes mínimos de `44x44px` (`min-h-[44px]`) y añade `@media (prefers-reduced-motion: reduce)`.
 
 ## 2. Cuándo Construir en `./src/components/` con `./specs/`
-- Únicamente cuando el usuario solicita un **componente más abstracto, distinto o compuesto** que la biblioteca nativa no resuelve de fábrica, o cuando en un proyecto con framework (`Vue`, `Angular`, `React`, `Svelte`) se requiere encapsular dicho componente abstracto siguiendo el contrato de `./specs/`.
+- Únicamente cuando el usuario solicita un **componente más abstracto, distinto o compuesto** que la biblioteca nativa no resuelve de fábrica, o cuando en un proyecto con framework (`Vue`, `Angular`, `React`, `Svelte`) se requiere encapsular dicho componente abstracto siguiendo el contrato de [`../../specs/`](../../specs/).

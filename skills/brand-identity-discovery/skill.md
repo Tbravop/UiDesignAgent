@@ -68,7 +68,7 @@ Si el proyecto no tiene colores ni identidad definida, la skill **no debe invent
 
 Una vez determinada la identidad, el agente debe compilar y escribir el archivo `DESIGN.md` en la raíz del proyecto (`<raíz-proyecto>/DESIGN.md`) basándose en la plantilla base [`DESIGN.md`](../../DESIGN.md), vinculando todos los colores primarios y semánticos a OKLCH y definiendo la escala tipográfica con `clamp()`.
 
-> **Paso Siguiente en la Cadena:** Una vez generado o actualizado `DESIGN.md` en la raíz del proyecto, activa inmediatamente [`framework-token-adapter`](../framework-token-adapter/SKILL.md) para inyectar y compilar los tokens resultantes en el framework o motor de estilos activo.
+> **Paso Siguiente en la Cadena:** Una vez generado o actualizado `DESIGN.md` en la raíz del proyecto, activa inmediatamente [`framework-token-adapter`](../framework-token-adapter/skill.md) para inyectar y compilar los tokens resultantes en el framework o motor de estilos activo.
 
 ---
 
@@ -78,4 +78,4 @@ Una vez determinada la identidad, el agente debe compilar y escribir el archivo 
 - [ ] Todos los colores se derivaron al formato `oklch()`.
 - [ ] Los tokens primarios exponen vectores crudos `L C H`.
 - [ ] Se generó o actualizó el archivo `DESIGN.md` en la raíz del proyecto.
-- [ ] Se ejecutó la compilación con [`framework-token-adapter`](../framework-token-adapter/SKILL.md).
+- [ ] Se ejecutó la compilación con [`framework-token-adapter`](../framework-token-adapter/skill.md).

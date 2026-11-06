@@ -1,3 +1,8 @@
+---
+name: visual-clustering
+description: Skill técnica para extraer propiedades computadas y agrupamiento visual vía Playwright.
+---
+
 # Visual Clustering Skill — Playwright Execution
 
 Skill técnica para extraer propiedades computadas vía Playwright.

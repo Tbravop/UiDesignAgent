@@ -1,6 +1,6 @@
 # Referencia: Anti-patrones de UI (Corregir a la vista)
 
-Esta guía recopila estructuras y decisiones de diseño que parecen razonables a primera vista, pero que causan problemas técnicos, de accesibilidad o de mantenimiento en producción. Cuando identifiques uno de estos patrones en el código que estás escribiendo o revisando, corrígelo inmediatamente. Esta es una referencia complementaria a las reglas de [`SKILL.md`](../SKILL.md) y a las directrices generales de [`UXAGENT.md`](../../../UXAGENT.md) y [`DESIGN.md`](../../../DESIGN.md).
+Esta guía recopila estructuras y decisiones de diseño que parecen razonables a primera vista, pero que causan problemas técnicos, de accesibilidad o de mantenimiento en producción. Cuando identifiques uno de estos patrones en el código que estás escribiendo o revisando, corrígelo inmediatamente. Esta es una referencia complementaria a las reglas de [`skill.md`](../skill.md) y a las directrices generales de [`UXAGENT.md`](../../../UXAGENT.md) y [`DESIGN.md`](../../../DESIGN.md).
 
 ---
 
@@ -13,7 +13,7 @@ Esta guía recopila estructuras y decisiones de diseño que parecen razonables a
 <div className="cursor-pointer" onClick={() => openModal()}> {/* Igual que en la VistaX */}
 ```
 
-Analizar componentes similares antes de programar es necesario para mantener la consistencia, pero el código base acumula código antiguo que no cumple con los estándares actuales. Un error existente es historia, no una licencia para duplicarlo. Las convenciones e instrucciones de [`SKILL.md`](../SKILL.md) y la Regla 1 de [`UXAGENT.md`](../../../UXAGENT.md) siempre tienen prioridad sobre el precedente de código antiguo. Si la corrección del componente vecino es rápida y de bajo costo, refactorízalo mientras estás ahí.
+Analizar componentes similares antes de programar es necesario para mantener la consistencia, pero el código base acumula código antiguo que no cumple con los estándares actuales. Un error existente es historia, no una licencia para duplicarlo. Las convenciones e instrucciones de [`skill.md`](../skill.md) y la Regla 1 de [`UXAGENT.md`](../../../UXAGENT.md) siempre tienen prioridad sobre el precedente de código antiguo. Si la corrección del componente vecino es rápida y de bajo costo, refactorízalo mientras estás ahí.
 
 ---
 
@@ -91,7 +91,7 @@ Esto añade una capa de indirección que dificulta el rastreo del código y comp
 <div className="flex items-center gap-2 rounded border p-2 text-muted hover:bg-surface-hover">
 ```
 
-Una cadena de clases repetida en múltiples archivos es un componente oculto. Si necesitas cambiar un margen o un color en el futuro, olvidarás actualizar una de las copias. Abstrae el marcado en un componente local de acuerdo a la escalera de abstracción de [`SKILL.md`](../SKILL.md) y reutiliza componentes oficiales auditados por [`design-system-auditor`](../../design-system-auditor/SKILL.md).
+Una cadena de clases repetida en múltiples archivos es un componente oculto. Si necesitas cambiar un margen o un color en el futuro, olvidarás actualizar una de las copias. Abstrae el marcado en un componente local de acuerdo a la escalera de abstracción de [`skill.md`](../skill.md) y reutiliza componentes oficiales auditados por [`design-system-auditor`](../../design-system-auditor/skill.md).
 
 ---
 
@@ -107,7 +107,7 @@ Una cadena de clases repetida en múltiples archivos es un componente oculto. Si
 <BotonSistema onClick={() => abrirElemento()}>...</BotonSistema>
 ```
 
-Un contenedor `<div>` con un evento de clic no recibe el foco del teclado, no responde a las teclas Enter o Espacio, y es invisible para herramientas de accesibilidad o lectores de pantalla. Usa siempre elementos semánticamente correctos (`<button>` o `<a>`) o componentes oficiales auditados en [`design-system-auditor`](../../design-system-auditor/SKILL.md) según la Regla 5 de [`UXAGENT.md`](../../../UXAGENT.md).
+Un contenedor `<div>` con un evento de clic no recibe el foco del teclado, no responde a las teclas Enter o Espacio, y es invisible para herramientas de accesibilidad o lectores de pantalla. Usa siempre elementos semánticamente correctos (`<button>` o `<a>`) o componentes oficiales auditados en [`design-system-auditor`](../../design-system-auditor/skill.md) según la Regla 5 de [`UXAGENT.md`](../../../UXAGENT.md).
 
 ### Colores estáticos o hardcodeados
 
@@ -118,7 +118,7 @@ Un contenedor `<div>` con un evento de clic no recibe el foco del teclado, no re
 <span className="text-[#f54e00]">
 ```
 
-Los valores hexadecimales fijos son invisibles para los cambios automáticos de interfaz, como el modo oscuro, y quedan obsoletos si la paleta de colores del proyecto se actualiza. Usa estrictamente las variables y tokens globales del sistema de diseño definidos en [`DESIGN.md`](../../../DESIGN.md) (ej. `text-danger`, `--color-brand`) y adaptados mediante [`framework-token-adapter`](../../framework-token-adapter/SKILL.md).
+Los valores hexadecimales fijos son invisibles para los cambios automáticos de interfaz, como el modo oscuro, y quedan obsoletos si la paleta de colores del proyecto se actualiza. Usa estrictamente las variables y tokens globales del sistema de diseño definidos en [`DESIGN.md`](../../../DESIGN.md) (ej. `text-danger`, `--color-brand`) y adaptados mediante [`framework-token-adapter`](../../framework-token-adapter/skill.md).
 
 ### Valores de diseño arbitrarios o manuales
 
@@ -139,7 +139,7 @@ Números mágicos que rompen la armonía visual de las escalas del proyecto. Usa
 <div className="animate-bounce motion-reduce:animate-none">
 ```
 
-La preferencia de movimiento reducido (`prefers-reduced-motion`) es una configuración crítica de accesibilidad para usuarios con trastornos vestibulares, no una sugerencia estética. Aplica las escalas de motion de [`DESIGN.md`](../../../DESIGN.md) y las auditorías de [`accessibility-contrast-auditor`](../../accessibility-contrast-auditor/SKILL.md).
+La preferencia de movimiento reducido (`prefers-reduced-motion`) es una configuración crítica de accesibilidad para usuarios con trastornos vestibulares, no una sugerencia estética. Aplica las escalas de motion de [`DESIGN.md`](../../../DESIGN.md) y las auditorías de [`accessibility-contrast-auditor`](../../accessibility-contrast-auditor/skill.md).
 
 ### El componente con estética artificial ("AI Slop")
 
@@ -178,7 +178,7 @@ const { tieneAcceso } = comprobarPermisos(); // Por defecto es false
 return tieneAcceso ? <ModuloPrivado /> : <BannerOferta />
 ```
 
-El estado "Desconocido" o "En vuelo" debe ser explícito. Inicializa las variables de estado de peticiones de red en `null` o bajo un estado `'unknown'`, evaluando primero ese escenario antes de dar por hecho una respuesta negativa, cumpliendo con la Regla 5 de [`UXAGENT.md`](../../../UXAGENT.md) y [`SKILL.md`](../SKILL.md).
+El estado "Desconocido" o "En vuelo" debe ser explícito. Inicializa las variables de estado de peticiones de red en `null` o bajo un estado `'unknown'`, evaluando primero ese escenario antes de dar por hecho una respuesta negativa, cumpliendo con la Regla 5 de [`UXAGENT.md`](../../../UXAGENT.md) y [`skill.md`](../skill.md).
 
 ---
 
@@ -191,4 +191,4 @@ El estado "Desconocido" o "En vuelo" debe ser explícito. Inicializa las variabl
 proyectoXHelper.ts, useProyectoXStatus, <BannerProyectoX />
 ```
 
-Cuando una característica del sistema cambie de nombre de cara al usuario, realiza un barrido completo en el código (componentes, funciones, archivos, carpetas y pruebas). Mantener alias técnicos obsoletos obliga a los nuevos desarrolladores a realizar procesos de traducción mental constantes. Esto no aplica a cadenas críticas congeladas expuestas al exterior (APIs, URLs, eventos de analítica o atributos de automatización) detalladas en la tabla de [`SKILL.md`](../SKILL.md) y la Regla 5 de [`UXAGENT.md`](../../../UXAGENT.md).
+Cuando una característica del sistema cambie de nombre de cara al usuario, realiza un barrido completo en el código (componentes, funciones, archivos, carpetas y pruebas). Mantener alias técnicos obsoletos obliga a los nuevos desarrolladores a realizar procesos de traducción mental constantes. Esto no aplica a cadenas críticas congeladas expuestas al exterior (APIs, URLs, eventos de analítica o atributos de automatización) detalladas en la tabla de [`skill.md`](../skill.md) y la Regla 5 de [`UXAGENT.md`](../../../UXAGENT.md).

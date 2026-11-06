@@ -1,3 +1,8 @@
+---
+name: playwright-inspector
+description: Skill para ejecutar el motor de Playwright activo en la Fase 0, Fase 1 y durante invocaciones de /design-system-auditor para escaneo en vivo de proyectos en cualquier framework.
+---
+
 # Skill Spec: Playwright Live DOM Inspector & Unmatched Cluster Detector
 
 Skill para ejecutar el motor de Playwright activo en la Fase 0, Fase 1 y durante invocaciones de `/design-system-auditor` para escaneo en vivo de proyectos en cualquier framework (`Vue.js`, `Angular`, `React`, `Svelte`, `HTML`).
@@ -20,8 +25,8 @@ En un viewport de escritorio (`1440x900`) y móvil (`390x844`):
 - Detectar layouts compuestos independientemente del sistema de clases: contenedores con 2 hijos directos en fila (`row`) y proporción `25%-45%` / `55%-75%` se clasifican como `molecule-card` (`orientation="horizontal"`).
 
 ## 3. Detección de Patrones sin Spec (`Unmatched DOM Clusters`)
-Cuando el inspector detecta en el DOM un elemento interactivo o un clúster repetido (3 o más instancias o sección funcional diferenciada) cuya firma geométrica/ARIA no coincide con ningún archivo en `./specs/`:
+Cuando el inspector detecta en el DOM un elemento interactivo o un clúster repetido (3 o más instancias o sección funcional diferenciada) cuya firma geométrica/ARIA no coincide con ningún archivo en [`../../specs/`](../../specs/):
 1. Emite una alerta de **Missing Spec Detected** indicando:
    - Tag semántico, roles ARIA, dimensiones de caja y estructura de hijos.
    - Clasificación sugerida (`atoms`, `molecules` u `organisms`).
-2. Dispara automáticamente la skill `./Skills/ui-library-spec-extractor.md` para generar el archivo `.spec.md` faltante antes de invocar a `./Skills/src-builder.md`.
+2. Dispara automáticamente la skill [`ui-library-spec-extractor`](../ui-library-spec-extractor/skill.md) para generar el archivo `.spec.md` faltante antes de invocar a [`src-builder`](../src-builder/skill.md).

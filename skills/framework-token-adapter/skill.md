@@ -11,7 +11,7 @@ Esta skill garantiza que los tokens abstractos definidos en [`DESIGN.md`](../../
 
 ## Cuándo usar esta skill
 
-- Inmediatamente después de crear o modificar el `DESIGN.md` en la raíz del proyecto (por ejemplo tras ejecutar [`brand-identity-discovery`](../brand-identity-discovery/SKILL.md)).
+- Inmediatamente después de crear o modificar el `DESIGN.md` en la raíz del proyecto (por ejemplo tras ejecutar [`brand-identity-discovery`](../brand-identity-discovery/skill.md)).
 - Al crear componentes que requieren clases de utilidad o variables de tema.
 - Al configurar por primera vez el sistema de temas (modo claro / modo oscuro) en un repositorio.
 
